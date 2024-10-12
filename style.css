@@ -1,0 +1,486 @@
+/* DTC2024 React 강의 — 슬라이드 전용 스타일
+   reveal.css / theme(black) / highlight(monokai) 다음에 로드되어 덮어쓴다.
+   로드 순서는 main.js의 import 순서를 따른다. react-1 ~ react-5가 같은 파일을 쓴다. */
+
+:root {
+  --accent: #61dafb;
+  --accent-2: #8ce7ff;
+  --accent-3: #f7df1e;
+  --warn: #ff7b6b;
+  --muted: #9a9a9a;
+  --line: rgba(255, 255, 255, 0.15);
+}
+
+.reveal {
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic",
+    "Noto Sans KR", "Source Sans Pro", Helvetica, sans-serif;
+  word-break: keep-all;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  text-transform: none;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.reveal h2 {
+  margin-bottom: 0.3em;
+}
+
+.reveal a {
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------
+   표지
+   --------------------------------------------------------- */
+
+.reveal .subtitle {
+  font-size: 0.7em;
+  color: var(--muted);
+}
+
+.reveal .byline {
+  margin-top: 1.5em;
+  font-size: 0.5em;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.reveal .hero {
+  margin: 0.5em auto;
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+
+/* ---------------------------------------------------------
+   슬라이드 소제목 / 문구
+   --------------------------------------------------------- */
+
+.reveal .slide-title {
+  margin: 0 0 0.8em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.62em;
+  font-weight: 600;
+  text-align: left;
+}
+
+.reveal .slide-title .tag {
+  margin-left: 0.6em;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  background: rgba(97, 218, 251, 0.16);
+  color: var(--accent);
+  font-size: 0.75em;
+  vertical-align: middle;
+}
+
+.reveal .slide-title .tag.warn {
+  background: rgba(255, 123, 107, 0.18);
+  color: var(--warn);
+}
+
+.reveal .lead {
+  margin: 0.4em 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.reveal .hint {
+  margin-top: 0.9em;
+  color: var(--muted);
+  font-size: 0.52em;
+}
+
+.reveal .hint.big {
+  font-family: monospace;
+  font-size: 0.85em;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.reveal kbd {
+  padding: 0.1em 0.5em;
+  border: 1px solid var(--line);
+  border-bottom-width: 3px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  font-family: monospace;
+  font-size: 0.85em;
+}
+
+/* ---------------------------------------------------------
+   코드 블록
+   --------------------------------------------------------- */
+
+.reveal pre {
+  width: 100%;
+  margin: 0.6rem 0;
+  box-shadow: none;
+  font-size: 0.38em;
+}
+
+/* 코드가 절대 자기 상자 밖으로 나가지 않게 한다.
+   overflow: visible 로 두면 긴 줄이 옆 칸을 밀고 슬라이드를 뚫는다. */
+.reveal pre code {
+  max-height: none;
+  padding: 0.9em 1.1em;
+  border-radius: 6px;
+  line-height: 1.45;
+  overflow-x: auto;
+}
+
+.reveal pre code + code {
+  margin-top: 0.55rem;
+}
+
+.reveal pre .filename {
+  display: block;
+  margin-bottom: -0.35rem;
+  padding: 0.35em 1.1em;
+  border-radius: 6px 6px 0 0;
+  background: rgba(255, 255, 255, 0.09);
+  color: var(--muted);
+  font-family: monospace;
+  text-align: left;
+}
+
+.reveal code.inline {
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  font-family: monospace;
+  font-size: 0.92em;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   코드 | 결과 2단 레이아웃
+   --------------------------------------------------------- */
+
+.reveal .split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 1.2rem;
+  align-items: center;
+  text-align: left;
+}
+
+/* 그리드 항목의 자동 최소 크기를 풀어야 좁은 칸에서 넘치지 않는다 */
+.reveal .split > * {
+  min-width: 0;
+}
+
+.reveal .split > pre {
+  margin: 0;
+}
+
+.reveal .demo {
+  padding: 2.1em 1em 1em;
+  border-radius: 8px;
+  font-size: 0.5em;
+  line-height: 1.6;
+  text-align: left;
+  overflow: auto;
+  min-width: 0;
+}
+
+.reveal .demo::before {
+  content: attr(data-label);
+  display: block;
+  margin: -2.1em -1em 0.9em;
+  padding: 0.5em 1em;
+  border-radius: 8px 8px 0 0;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+}
+
+/* --- 브라우저 화면 --- */
+
+.reveal .demo.browser {
+  background: #fff;
+  color: #202020;
+}
+
+.reveal .demo.browser::before {
+  background: #e3e3e3;
+  color: #666;
+}
+
+.reveal .demo.browser h1,
+.reveal .demo.browser h2,
+.reveal .demo.browser h3 {
+  margin: 0.4em 0;
+  color: #202020;
+  font-weight: bold;
+  letter-spacing: normal;
+  text-shadow: none;
+  text-transform: none;
+}
+
+.reveal .demo.browser h1 { font-size: 1.7em; }
+.reveal .demo.browser h2 { font-size: 1.35em; }
+.reveal .demo.browser h3 { font-size: 1.1em; }
+.reveal .demo.browser p { margin: 0.5em 0; }
+
+.reveal .demo.browser ul,
+.reveal .demo.browser ol {
+  display: block;
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+  text-align: left;
+}
+
+.reveal .demo.browser ul { list-style: disc; }
+.reveal .demo.browser ol { list-style: decimal; }
+.reveal .demo.browser li { margin: 0.1em 0; }
+
+.reveal .demo.browser a {
+  color: #0645ad;
+  text-decoration: underline;
+}
+
+.reveal .demo.browser button {
+  margin-right: 0.3em;
+  padding: 0.3em 1em;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background: #ececec;
+  color: #202020;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.reveal .demo.browser input {
+  padding: 0.2em 0.4em;
+  border: 1px solid #999;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 1em;
+}
+
+.reveal .demo.browser .note {
+  color: #888;
+  font-style: italic;
+}
+
+/* --- 콘솔 출력 --- */
+
+.reveal .demo.console {
+  background: #101014;
+  border: 1px solid var(--line);
+  color: #e8e8e8;
+  font-family: monospace;
+}
+
+.reveal .demo.console::before {
+  background: #22222a;
+  color: #8a8a95;
+}
+
+.reveal .demo.console .ln {
+  padding-left: 1.1em;
+  text-indent: -1.1em;
+}
+
+.reveal .demo.console .ln::before {
+  content: "› ";
+  color: #5b5b66;
+}
+
+.reveal .demo.console .ln.empty {
+  color: #5b5b66;
+  font-style: italic;
+}
+
+.reveal .demo.console .ln.empty::before {
+  content: "";
+}
+
+.reveal .demo.console .ln.err {
+  color: var(--warn);
+}
+
+/* --- 식 → 값 --- */
+
+.reveal .demo.values {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  color: #e8e8e8;
+}
+
+.reveal .demo.values::before {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+}
+
+.reveal .demo.values .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 0.2em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  font-family: monospace;
+}
+
+.reveal .demo.values .row:last-child {
+  border-bottom: none;
+}
+
+.reveal .demo.values .row code { color: #cfcfcf; }
+.reveal .demo.values .row span { color: var(--accent); white-space: nowrap; }
+
+/* ---------------------------------------------------------
+   컴포넌트 트리 도식
+   --------------------------------------------------------- */
+
+.reveal .tree {
+  display: inline-block;
+  padding: 0.8em 1.2em;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.5em;
+  line-height: 1.8;
+  text-align: left;
+  white-space: pre;
+}
+
+.reveal .tree b {
+  color: var(--accent);
+  font-weight: normal;
+}
+
+.reveal .tree i {
+  color: var(--muted);
+  font-style: normal;
+}
+
+/* ---------------------------------------------------------
+   비교 카드
+   --------------------------------------------------------- */
+
+.reveal .compare {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 0.6em;
+}
+
+.reveal .compare > div {
+  flex: 1;
+  max-width: 17em;
+  padding: 1em;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.reveal .compare .tag-lang {
+  display: inline-block;
+  margin-bottom: 0.4em;
+  padding: 0.15em 0.8em;
+  border-radius: 999px;
+  background: rgba(255, 123, 107, 0.18);
+  color: var(--warn);
+  font-family: monospace;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.reveal .compare > div:last-child .tag-lang {
+  background: rgba(97, 218, 251, 0.16);
+  color: var(--accent);
+}
+
+.reveal .compare code { font-family: monospace; }
+
+.reveal .compare em {
+  display: block;
+  margin-top: 0.5em;
+  color: var(--muted);
+  font-size: 0.8em;
+  font-style: normal;
+}
+
+/* ---------------------------------------------------------
+   목록 / 요약 카드 / 표
+   --------------------------------------------------------- */
+
+.reveal .toc,
+.reveal .goals {
+  display: inline-block;
+  margin: 0.4em 0;
+  font-size: 0.7em;
+  line-height: 1.75;
+  text-align: left;
+}
+
+.reveal .toc li,
+.reveal .goals li {
+  margin-bottom: 0.3em;
+}
+
+.reveal .summary-card {
+  display: inline-block;
+  margin: 0.3em 0;
+  padding: 1em 1.6em;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  list-style: none;
+  font-size: 0.62em;
+  line-height: 1.9;
+  text-align: left;
+}
+
+.reveal .summary-card.warn {
+  border-left-color: var(--warn);
+}
+
+.reveal table.summary,
+.reveal table.keys {
+  margin: 0.4em auto;
+  border-collapse: collapse;
+  font-size: 0.54em;
+}
+
+.reveal table.summary td,
+.reveal table.keys td {
+  padding: 0.35em 0.9em;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.reveal table.summary td:first-child,
+.reveal table.keys td:first-child {
+  color: var(--accent);
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   질문 문구 — "여기서 ~하면?"
+   --------------------------------------------------------- */
+
+.reveal .ask {
+  display: inline-block;
+  margin: 0.6em 0 0;
+  padding: 0.35em 1em;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--accent);
+  font-size: 0.55em;
+  font-weight: 600;
+}
+
+.reveal .split + .ask,
+.reveal pre + .ask {
+  margin-top: 0.8em;
+}
